@@ -10,28 +10,43 @@
 
 function anagrams(stringA, stringB) {
 
-    let strA = charMap(stringA)
-    let strB = charMap(stringB)
+        let strA = stringA.replace(/[^\w]/g,"").toLowerCase().split('').sort().join('');
+        let strB = stringB.replace(/[^\w]/g,"").toLowerCase().split('').sort().join('');
 
-    if(Object.keys(strA).length !== Object.keys(strB).length){
-        return false;
-    }
-
-    for(let char in strA){
-        if(strA[char] !== strB[char]){
+        if(strA == strB){
+            return true;
+        }else{
             return false;
         }
-    }
-    return true;
 }
 
-function charMap(str){
-    const chars = {};
 
-     for (let char of str.replace(/[^\w]/g,"").toLowerCase()){
-         chars[char] =  chars[char] + 1 || 1;
-     }
-     return chars
-}
 
 module.exports = anagrams;
+
+
+// function anagrams(stringA, stringB) {
+
+//     let strA = charMap(stringA)
+//     let strB = charMap(stringB)
+
+//     if(Object.keys(strA).length !== Object.keys(strB).length){
+//         return false;
+//     }
+
+//     for(let char in strA){
+//         if(strA[char] !== strB[char]){
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+// function charMap(str){
+//     const chars = {};
+
+//      for (let char of str.replace(/[^\w]/g,"").toLowerCase()){
+//          chars[char] =  chars[char] + 1 || 1;
+//      }
+//      return chars
+// }
