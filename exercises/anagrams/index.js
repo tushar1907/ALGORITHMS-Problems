@@ -10,25 +10,25 @@
 
 function anagrams(stringA, stringB) {
 
-    let strA = stringA.replace(/[^\w]/g,"").toLowerCase();
-    let strB = stringB.replace(/[^\w]/g,"").toLowerCase();
+    let strA = charMap(stringA)
+    let strB = charMap(stringB)
 
-    if(strA.length === strB.length){
-        for(let char in strA){
-            if(charMap(strA)[char]!==charMap(strB)[char]){
-                return false
-            }
-        }
-        return true
-    }else{
-        return false
+    if(Object.keys(strA).length !== Object.keys(strB).length){
+        return false;
     }
+
+    for(let char in strA){
+        if(strA[char] !== strB[char]){
+            return false;
+        }
+    }
+    return true;
 }
 
 function charMap(str){
     const chars = {};
 
-     for (let char of str){
+     for (let char of str.replace(/[^\w]/g,"").toLowerCase()){
          chars[char] =  chars[char] + 1 || 1;
      }
      return chars
