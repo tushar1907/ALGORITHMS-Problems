@@ -1,0 +1,14 @@
+class MaxBinaryHeap{
+    constructor(){
+        this.values = [];
+    }
+
+    insert(elements){
+        this.values.push(elements);
+        this.bubbleUp()
+    }
+
+    bubbleUp(){
+        let index = this.values.pa
+    }
+}
