@@ -61,4 +61,41 @@ function merge(left, right) {
     return [...result, ...left, ...right];
 }
 
+function quickSort(arr){
+    return quickSortArray(arr,0,arr.length-1);
+}
+
+function quickSortArray(arr, left, right){
+    if(left>=right) return;
+
+    let pivot =arr[(left+right)/2];
+    
+    let index = partition(arr, left, right, pivot);
+
+    quickSortArray(arr,left,index-1);
+
+    quickSortArray(arr,index+1, right);
+
+}
+
+function partition(arr, left, right, pivot){
+    while(left<=right){
+        while(arr[left] < pivot){
+            left++;
+        }
+        while(arr[right] > pivot){
+            right--;
+        }
+
+        if(left<=right){
+            let temp = arr[left];
+            arr[left] = arr[right];
+            arr[righ] = temp;
+            left++;
+            right--;
+        }
+    }
+    return left;
+}
+
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
