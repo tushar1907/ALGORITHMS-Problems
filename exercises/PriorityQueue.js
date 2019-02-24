@@ -1,11 +1,12 @@
-class MaxHeapExtraxtMax{
+class PriorityQueue{
     constructor(){
-        this.values = [44,35,33,18,27,12];
+        this.values = [];
     }
-
-    insert(element){
-        this.values.push(element);
-        this.bubbleUp()
+    //Insersion of elements
+    enqueue(val, priority){
+        let newNode = new Node(val,priority);
+        this.values.push(newNode);
+        this.bubbleUp();
     }
 
     bubbleUp(){
@@ -14,14 +15,14 @@ class MaxHeapExtraxtMax{
         while(idx>0){
             let parentidx = Math.floor((idx-1)/2);
             let parent = this.values[parentidx];
-            if(element <= parent) break;
+            if(element.priority <= parent.priority) break;
             this.values[parentidx] = element;
             this.values[idx] = parent;
             idx = parentidx;
         }
     }
-
-    extractMax(){
+    //Extracion of Maximum element
+    dequeue(){
         const max = this.values[0];
         const end = this.values.pop();
         this.values[0] = end;
@@ -40,7 +41,7 @@ class MaxHeapExtraxtMax{
 
             if(leftChildIdx < length){
                 let leftChild  = this.values[leftChildIdx];
-                if(leftChild > element){
+                if(leftChild.priority > element.priority){
                     swap = leftChildIdx;
                 }
             }
@@ -48,12 +49,12 @@ class MaxHeapExtraxtMax{
             if(rightChildIdx < length){
                 let rightChild  = this.values[rightChildIdx];
                 if(
-                (swap == null && rightChild > element)||
-                (swap !== null && rightChild > element)
+                (swap == null && rightChild.priority > element.priority)||
+                (swap !== null && rightChild.priority > element.priority)
                 ){
                     swap = rightChildIdx;
                 }
-            }
+            } 
 
             if(swap === null) break;
             this.values[idx] = this.values[swap];
@@ -64,4 +65,16 @@ class MaxHeapExtraxtMax{
     }
 }
 
-let heap3= new MaxHeapExtraxtMax();
+class Node{
+    constructor(val, priority){
+        this.val = val;
+        this.priority= priority;
+    }
+}
+
+let ER = new PriorityQueue();
+ER.enqueue("common cold", 1);
+ER.enqueue("gunshot wound", 5);
+ER.enqueue("high fever", 2);
+
+ER.dequeue();
