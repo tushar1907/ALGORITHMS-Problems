@@ -23,7 +23,7 @@ class LinkedList {
 
     size(){
         let count = 0;
-        let node = this.head;
+        let node = this.head;x
         while(node){
             count++
             node = node.next;
@@ -48,7 +48,7 @@ class LinkedList {
         //             return node;
         //         }
         //     node = node.next;
-        // }  
+        // }   
         
         return this.getAt(this.size()-1);
     }

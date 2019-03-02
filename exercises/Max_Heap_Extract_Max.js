@@ -24,7 +24,7 @@ class MaxHeapExtraxtMax{
     extractMax(){
         const max = this.values[0];
         const end = this.values.pop();
-        this.values[0] = end;
+         this.values[0] = end;
         this.sinkDown();
         return max;
     }
